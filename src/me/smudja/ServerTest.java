@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 public class ServerTest {
 
 	public static void main(String[] args) {
-		Server sally = new Server();
+		Server sally = new Server("Sally");
 		sally.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		sally.startServer();
 	}
