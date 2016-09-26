@@ -62,10 +62,11 @@ public class Server extends JFrame {
 
 	// wait for connection, then display connection info
 	private void waitForConnection() throws IOException {
-		log(" Waiting for client connection... \n");
+		log("\n Waiting for client connection... ");
 		connections.add(new ClientConnection(this, server.accept())); // this waits for a connection request
 										// then accepts it and creates the
 										// connection
+		ableToType(true);
 	}
 
 	// send message to client

@@ -54,8 +54,11 @@ public class ClientConnection implements Runnable {
 			try {
 				msg = (String) input.readObject();
 				server.sendToAll("\n [" + thread.getName() + "] " + msg);
-			} catch (ClassNotFoundException exc) {
+			} catch (ClassNotFoundException cnfExc) {
 				server.log("\n ERROR: Client send invalid message! ");
+			} catch(EOFException eofExc) {
+				server.log("\n " + getName() + " closed the connection");
+				break;
 			}
 		} while (!msg.equals("END"));	
 	}
