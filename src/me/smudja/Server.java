@@ -7,7 +7,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-import me.smudja.commands.Ping;
+import me.smudja.commands.*;
 
 public class Server extends JFrame {
 
@@ -110,5 +110,6 @@ public class Server extends JFrame {
 	
 	private void registerCommands() {
 		CommandManager.INSTANCE.add(new Ping());
+		CommandManager.INSTANCE.add(new Help());
 	}
 }

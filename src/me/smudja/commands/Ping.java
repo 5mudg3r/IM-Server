@@ -5,11 +5,18 @@ import me.smudja.Command;
 
 public class Ping implements Command {
 	
-	private String name = "ping";
+	private final String name = "ping";
+	
+	private final String desc = "Replies with 'Pong!'";
 
 	@Override
 	public String getName() {
 		return name;
+	}
+	
+	@Override
+	public String getDescription() {
+		return desc;
 	}
 
 	@Override
