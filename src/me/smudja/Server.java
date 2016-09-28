@@ -7,6 +7,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import me.smudja.commands.Ping;
+
 public class Server extends JFrame {
 
 	private String name;
@@ -19,6 +21,7 @@ public class Server extends JFrame {
 	public Server(String name) {
 		super("IM Server - " + name); // title of window
 		this.name = name;
+		registerCommands();
 		connections = new ArrayList<ClientConnection>();
 		userText = new JTextField();
 		userText.setEditable(false); // initialise to be uneditable, we will
@@ -103,5 +106,9 @@ public class Server extends JFrame {
 			ableToType(false);
 		}
 		sendToAll("\n " + client.getName() + " has disconnected.");	
+	}
+	
+	private void registerCommands() {
+		CommandManager.INSTANCE.add(new Ping());
 	}
 }

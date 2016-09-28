@@ -53,7 +53,27 @@ public class ClientConnection implements Runnable {
 			// have conversation
 			try {
 				msg = (String) input.readObject();
-				server.sendToAll("\n [" + thread.getName() + "] " + msg);
+				if(msg.substring(0, 1).compareTo("/") == 0) {
+					int splitIndex = msg.indexOf(' ');
+					String cmdName;
+					String[] args;
+					if(splitIndex == -1) {
+						cmdName = msg.substring(1);
+						args = new String[]{};
+					}
+					else {
+						cmdName = msg.substring(1, splitIndex);
+						args = msg.substring(splitIndex).split("\\s+");
+					}
+					for(Command cmd : CommandManager.INSTANCE.getCommands()) {
+						if(cmd.getName().compareTo(cmdName) == 0) {
+							cmd.handle(this, args);
+						}
+					}
+				}
+				else {
+					server.sendToAll("\n [" + thread.getName() + "] " + msg);
+				}
 			} catch (ClassNotFoundException cnfExc) {
 				server.log("\n ERROR: Client send invalid message! ");
 			} catch(EOFException eofExc) {
