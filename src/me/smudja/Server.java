@@ -118,4 +118,5 @@ public class Server extends JFrame {
 		CommandManager.INSTANCE.add(new Help());
 		CommandManager.INSTANCE.add(new List());
 	}
+	
 }
