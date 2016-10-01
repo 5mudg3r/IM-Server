@@ -35,6 +35,10 @@ public class ClientConnection implements Runnable {
 	public String getName() {
 		return thread.getName();
 	}
+	
+	public Server getServer() {
+		return server;
+	}
 
 	private void setupStreams() throws IOException {
 			output = new ObjectOutputStream(connection.getOutputStream());

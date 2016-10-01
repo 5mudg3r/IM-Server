@@ -8,6 +8,7 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import me.smudja.commands.*;
+import me.smudja.commands.List;
 
 public class Server extends JFrame {
 
@@ -46,6 +47,10 @@ public class Server extends JFrame {
 	
 	public ServerSocket getSocket() {
 		return this.server;
+	}
+	
+	public ArrayList<ClientConnection> getConnections() {
+		return connections;
 	}
 
 	// set up and run server
@@ -111,5 +116,6 @@ public class Server extends JFrame {
 	private void registerCommands() {
 		CommandManager.INSTANCE.add(new Ping());
 		CommandManager.INSTANCE.add(new Help());
+		CommandManager.INSTANCE.add(new List());
 	}
 }
